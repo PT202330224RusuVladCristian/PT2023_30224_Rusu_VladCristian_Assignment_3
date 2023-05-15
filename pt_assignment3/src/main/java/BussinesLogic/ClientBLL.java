@@ -53,7 +53,7 @@ public class ClientBLL {
      * @param index represents the index of a client
      */
     public void deleteClient(int index) {
-        Client client = clientAtIndex(index-1);
+        Client client = clientAtIndex(index);
         clientDAO.delete(client);
     }
 

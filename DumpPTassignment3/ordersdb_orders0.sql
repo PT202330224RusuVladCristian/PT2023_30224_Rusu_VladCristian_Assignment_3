@@ -16,29 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `product`
+-- Table structure for table `orders`
 --
 
-DROP TABLE IF EXISTS `product`;
+DROP TABLE IF EXISTS `orders`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `product` (
-  `id` int NOT NULL,
-  `name` varchar(45) DEFAULT NULL,
-  `stock` int DEFAULT NULL,
-  `price` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `orders` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `quantity` int DEFAULT NULL,
+  `date` date DEFAULT NULL,
+  `id_client` int NOT NULL,
+  `id_product` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_client_idx` (`id_client`),
+  KEY `id_product_idx` (`id_product`),
+  CONSTRAINT `id_client` FOREIGN KEY (`id_client`) REFERENCES `client` (`id`),
+  CONSTRAINT `id_product` FOREIGN KEY (`id_product`) REFERENCES `product` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `product`
+-- Dumping data for table `orders`
 --
 
-LOCK TABLES `product` WRITE;
-/*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'faianta',160,10),(3,'lavabila',50,1);
-/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+LOCK TABLES `orders` WRITE;
+/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
+INSERT INTO `orders` VALUES (2,1000,'2023-05-15',8,3);
+/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -50,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-14 17:24:54
+-- Dump completed on 2023-05-15 11:12:49

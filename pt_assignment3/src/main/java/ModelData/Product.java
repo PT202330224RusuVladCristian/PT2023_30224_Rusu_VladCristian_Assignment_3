@@ -3,8 +3,9 @@ package ModelData;
 public class Product {
     private int id;
     private String name;
-    private int stock;
     private int price;
+    private int stock;
+
     public Product() {
     }
 

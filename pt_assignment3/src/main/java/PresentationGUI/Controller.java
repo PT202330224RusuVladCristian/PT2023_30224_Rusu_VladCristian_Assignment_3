@@ -241,7 +241,7 @@ public class Controller {
                                                 productForOrder.getName(),
                                         }
                                 );
-                                vieworder.getTableProducts().getModel().setValueAt(productForOrder.getStock() - parseInt(vieworder.getQuantity()), productIndexOrder, 1);
+                                vieworder.getTableProducts().getModel().setValueAt(productForOrder.getStock() - parseInt(vieworder.getQuantity()), productIndexOrder, 2);
                                 Product product = new Product(productForOrder.getName(), productForOrder.getPrice(), productForOrder.getStock() - parseInt(vieworder.getQuantity()));
                                 productBll.updateProduct(productIndexOrder, product);//updating the stock product
                                 ordersBll.makeOrder(clientForOrder, productForOrder, parseInt(vieworder.getQuantity()), orderDate);//inserting a new order in the DB
